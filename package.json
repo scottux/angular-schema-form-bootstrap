@@ -1,8 +1,8 @@
 {
-  "name": "angular-schema-form-bootstrap",
+  "name": "angular-schema-form-spark",
   "version": "1.0.0-alpha.5",
-  "description": "Bootstrap 3 decorator for Angular Schema Form",
-  "main": "dist/angular-schema-form-bootstrap.js",
+  "description": "Spark decorator for Angular Schema Form",
+  "main": "dist/angular-schema-form-spark.js",
   "scripts": {
     "build": "webpack",
     "dist": "webpack --config webpack.config.dist.js",
@@ -16,7 +16,8 @@
   "author": "json-schema-form",
   "contributors": [
     "David Jensen <david.lgj@gmail.com> (https://github.com/davidlgj)",
-    "Marcel J Bennett <iamanthropic@gmail.com> (https://github.com/Anthropic)"
+    "Marcel J Bennett <iamanthropic@gmail.com> (https://github.com/Anthropic)",
+    "D Scott Carroll <d.scott.carroll@gmail.com> (https://github.com/scottux)"
   ],
   "license": "MIT",
   "dependencies": {
