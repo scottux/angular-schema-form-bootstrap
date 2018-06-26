@@ -1,4 +1,4 @@
 <fieldset ng-disabled="form.readonly" class="schema-form-fieldset {{::form.htmlClass + ' ' + idClass}}">
-  <legend ng-class="{'sr-only': !showTitle() }">{{ form.title }}</legend>
+  <legend ng-class="{'sprk-u-ScreenReaderText': !showTitle() }">{{ form.title }}</legend>
   <div class="sprk-b-HelperText" ng-show="form.description" ng-bind-html="form.description"></div>
 </fieldset>

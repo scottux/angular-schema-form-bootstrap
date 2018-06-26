@@ -5,7 +5,7 @@
        'has-feedback': form.feedback !== false,
        'required': form.required === true
      }">
-  <label class="sprk-b-Label {{::form.labelHtmlClass}}" ng-class="{'sr-only': !showTitle()}" for="{{::fieldId(true, false)}}">{{form.title}}</label>
+  <label class="sprk-b-Label {{::form.labelHtmlClass}}" ng-class="{'sprk-u-ScreenReaderText': !showTitle()}" for="{{::fieldId(true, false)}}">{{form.title}}</label>
 
   <input ng-if="!form.fieldAddonLeft && !form.fieldAddonRight"
          ng-show="::form.key"
@@ -51,7 +51,7 @@
 
   <span ng-if="hasError() || hasSuccess()"
         id="{{::fieldId(true, true) + '-status'}}"
-        class="sr-only">{{ hasSuccess() ? '(success)' : '(error)' }}</span>
+        class="sprk-u-ScreenReaderText">{{ hasSuccess() ? '(success)' : '(error)' }}</span>
 
   <div class="sprk-b-HelperText" sf-message="form.description"></div>
 </div>
