@@ -6,7 +6,7 @@
     "D Scott Carroll <d.scott.carroll@gmail.com>"
   ],
   "description": "Spark decorator for Angular Schema Form",
-  "main": "dist/spark-decorator.js",
+  "main": "dist/angular-schema-form-spark.js",
   "keywords": [
     "angular-schema-form-decorator",
     "json-schema",
