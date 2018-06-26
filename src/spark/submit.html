@@ -1,10 +1,10 @@
-<div class="form-group schema-form-submit {{::form.htmlClass + ' ' + idClass}}">
+<div class="sprk-b-InputContainer schema-form-submit {{::form.htmlClass + ' ' + idClass}}">
   <input type="submit"
-         class="btn {{ form.style || 'btn-primary' }} {{::form.fieldHtmlClass}}"
+         class="sprk-c-Button {{ form.style || '' }} {{::form.fieldHtmlClass}}"
          value="{{form.title}}"
          ng-disabled="form.readonly"
          ng-if="form.type === 'submit'">
-  <button class="btn {{ form.style || 'btn-default' }}"
+  <button class="sprk-c-Button {{ form.style || '' }}"
           type="button"
           ng-click="buttonClick($event,form)"
           ng-disabled="form.readonly"
