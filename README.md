@@ -1,9 +1,7 @@
 Angular Spark Decorator
 ==========================
 
-For https://github.com/json-schema-form/angular-schema-form
-
-This is the Spark Design System decorator for Angular Schema Form.
+This is the [Spark Design System decorator](https://sparkdesignsystem.com) for [Angular Schema Form](https://github.com/json-schema-form/angular-schema-form).
 
 Install
 -------
