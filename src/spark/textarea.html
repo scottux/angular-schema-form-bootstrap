@@ -1,14 +1,14 @@
-<div class="form-group has-feedback {{::form.htmlClass + ' ' + idClass}} schema-form-textarea"
+<div class="sprk-b-InputContainer has-feedback {{::form.htmlClass + ' ' + idClass}} schema-form-textarea"
      ng-class="{
        'has-error': form.disableErrorState !== true && hasError(),
        'has-success': form.disableSuccessState !== true && hasSuccess(),
        'has-feedback': form.feedback !== false,
        'required': form.required === true
      }">
-  <label class="control-label {{::form.labelHtmlClass}}" ng-class="{'sr-only': !showTitle()}" for="{{::fieldId(true, false)}}">{{form.title}}</label>
+  <label class="sprk-b-Label {{::form.labelHtmlClass}}" ng-class="{'sr-only': !showTitle()}" for="{{::fieldId(true, false)}}">{{form.title}}</label>
 
   <textarea ng-if="!form.fieldAddonLeft && !form.fieldAddonRight"
-            class="form-control {{::form.fieldHtmlClass}}"
+            class="sprk-b-TextInput  sprk-u-Width-100 {{::form.fieldHtmlClass}}"
             id="{{::fieldId(true, false)}}"
             sf-changed="form"
             ng-attr-placeholder="{{::form.placeholder}}"
@@ -22,7 +22,7 @@
     <span ng-if="form.fieldAddonLeft"
           class="input-group-addon"
           ng-bind-html="form.fieldAddonLeft"></span>
-    <textarea class="form-control {{::form.fieldHtmlClass}}"
+    <textarea class="sprk-b-TextInput  sprk-u-Width-100 {{::form.fieldHtmlClass}}"
               id="{{::fieldId(true, false)}}"
               sf-changed="form"
               ng-attr-placeholder="{{::form.placeholder}}"
@@ -35,5 +35,5 @@
           ng-bind-html="form.fieldAddonRight"></span>
   </div>
 
-  <span class="help-block" sf-message="form.description"></span>
+  <span class="sprk-b-HelperText" sf-message="form.description"></span>
 </div>
