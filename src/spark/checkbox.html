@@ -1,4 +1,4 @@
-<div class="checkbox schema-form-checkbox {{::form.htmlClass + ' ' + idClass}}"
+<div class="sprk-b-SelectionContainer schema-form-checkbox {{::form.htmlClass + ' ' + idClass}}"
      ng-class="{
        'has-error': form.disableErrorState !== true && hasError(),
        'has-success': form.disableSuccessState !== true && hasSuccess(),
@@ -13,7 +13,7 @@
            schema-validate="form"
            class="{{::form.fieldHtmlClass}}"
            name="{{::fieldId(true, false)}}">
-    <span ng-bind-html="form.title"></span>
+    <span class="sprk-b-Label--inline sprk-u-mls" ng-bind-html="form.title"></span>
   </label>
-  <div class="help-block" sf-message="form.description"></div>
+  <div class="sprk-b-HelperText" sf-message="form.description"></div>
 </div>
