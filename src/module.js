@@ -1,1 +1,1 @@
-require('bootstrap-decorator.js');
+require('spark-decorator.js');
