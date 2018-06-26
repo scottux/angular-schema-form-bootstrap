@@ -12,7 +12,7 @@
           id="{{::fieldId(true, false)}}"
           ng-disabled="form.readonly"
           sf-changed="form"
-          class="sprk-b-Select {{::form.fieldHtmlClass}}"
+          class="sprk-b-Select sprk-u-Width-100 {{::form.fieldHtmlClass}}"
           schema-validate="form"
           ng-options="item.value as item.name group by item.group for item in form.titleMap"
           name="{{::fieldId(true, false)}}">

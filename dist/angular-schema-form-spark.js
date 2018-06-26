@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-spark
  * @version 1.0.0-alpha.5
- * @date Tue, 26 Jun 2018 15:23:47 GMT
+ * @date Tue, 26 Jun 2018 15:58:19 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-spark
  * @license MIT
  * Copyright (c) 2014-2018 JSON Schema Form
@@ -167,7 +167,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/spark/select.html';
-var html = "<div class=\"sprk-b-InputContainer {{::form.htmlClass + ' ' + idClass}} schema-form-select\"\n     ng-class=\"{\n       'has-error': form.disableErrorState !== true && hasError(),\n       'has-success': form.disableSuccessState !== true && hasSuccess(),\n       'has-feedback': form.feedback !== false,\n       'required': form.required === true\n     }\">\n  <label class=\"sprk-b-Label {{::form.labelHtmlClass}}\" ng-show=\"showTitle()\" for=\"{{::fieldId(true, false)}}\">\n    {{form.title}}\n  </label>\n  <select sf-field-model\n          id=\"{{::fieldId(true, false)}}\"\n          ng-disabled=\"form.readonly\"\n          sf-changed=\"form\"\n          class=\"sprk-b-Select {{::form.fieldHtmlClass}}\"\n          schema-validate=\"form\"\n          ng-options=\"item.value as item.name group by item.group for item in form.titleMap\"\n          name=\"{{::fieldId(true, false)}}\">\n  </select>\n  <div class=\"sprk-b-HelperText\" sf-message=\"form.description\"></div>\n</div>\n";
+var html = "<div class=\"sprk-b-InputContainer {{::form.htmlClass + ' ' + idClass}} schema-form-select\"\n     ng-class=\"{\n       'has-error': form.disableErrorState !== true && hasError(),\n       'has-success': form.disableSuccessState !== true && hasSuccess(),\n       'has-feedback': form.feedback !== false,\n       'required': form.required === true\n     }\">\n  <label class=\"sprk-b-Label {{::form.labelHtmlClass}}\" ng-show=\"showTitle()\" for=\"{{::fieldId(true, false)}}\">\n    {{form.title}}\n  </label>\n  <select sf-field-model\n          id=\"{{::fieldId(true, false)}}\"\n          ng-disabled=\"form.readonly\"\n          sf-changed=\"form\"\n          class=\"sprk-b-Select sprk-u-Width-100 {{::form.fieldHtmlClass}}\"\n          schema-validate=\"form\"\n          ng-options=\"item.value as item.name group by item.group for item in form.titleMap\"\n          name=\"{{::fieldId(true, false)}}\">\n  </select>\n  <div class=\"sprk-b-HelperText\" sf-message=\"form.description\"></div>\n</div>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
