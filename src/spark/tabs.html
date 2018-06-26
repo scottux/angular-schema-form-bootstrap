@@ -1,0 +1,13 @@
+<div ng-init="selected = { tab: 0 }" class="sprk-c-Tabs {{::form.htmlClass + ' ' + idClass}}" role="tablist" aria-orientation="horizontal" data-sprk-navigation="tabs">
+  <div class="sprk-c-Tabs__buttons">
+    <button role="tab" ng-repeat="tab in form.tabs"
+        ng-disabled="form.readonly"
+            class="sprk-c-Tabs__button"
+        ng-click="$event.preventDefault() || (selected.tab = $index)"
+        ng-class="{'sprk-c-Tabs__button--active': selected.tab === $index}">
+        {{ tab.title }}</button>
+  </div>
+
+  <div class="sprk-c-Tabs__content {{::form.fieldHtmlClass}}" role="tabpanel">
+  </div>
+</div>
