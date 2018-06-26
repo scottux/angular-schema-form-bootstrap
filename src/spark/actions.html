@@ -1,0 +1,15 @@
+<div class="sprk-o-Stack sprk-o-Stack--medium schema-form-actions {{::form.htmlClass + ' ' + idClass}}">
+    <div class="sprk-o-Stack__item" ng-repeat-start="item in form.items">
+        <input
+            type="submit"
+            class="sprk-c-Button {{ item.style || '' }} {{::form.fieldHtmlClass}}"
+            value="{{item.title}}"
+            ng-if="item.type === 'submit'">
+        <button
+            class="sprk-c-Button {{ item.style || '' }} {{::form.fieldHtmlClass}}"
+            type="button"
+            ng-disabled="form.readonly"
+            ng-if="item.type !== 'submit'"
+            ng-click="buttonClick($event,item)"><span ng-if="item.icon" class="{{item.icon}}"></span>{{item.title}}</button>
+    </div>
+</div>

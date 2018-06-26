@@ -6,6 +6,6 @@ config.entry = {
   'angular-schema-form-spark-bundled': [ 'angular-schema-form', path.join(__dirname, 'src', 'module') ],
   'angular-schema-form-spark.min': [ path.join(__dirname, 'src', 'module') ],
   'angular-schema-form-spark-bundled.min': [ 'angular-schema-form', path.join(__dirname, 'src', 'module') ],
-}
+};
 
 module.exports = config;
