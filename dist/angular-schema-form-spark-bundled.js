@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-spark
  * @version 1.0.0-alpha.5
- * @date Tue, 26 Jun 2018 14:06:45 GMT
+ * @date Tue, 26 Jun 2018 14:27:52 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-spark
  * @license MIT
  * Copyright (c) 2014-2018 JSON Schema Form
@@ -273,7 +273,7 @@ decoratorConfig.$inject = [
  * @param sfBuilderProvider
  */
 function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
-    var simpvarransclusion  = sfBuilderProvider.builders.simpvarransclusion;
+    var simpleTransclusion  = sfBuilderProvider.builders.simpleTransclusion;
     var ngModelOptions      = sfBuilderProvider.builders.ngModelOptions;
     var ngModel             = sfBuilderProvider.builders.ngModel;
     var sfField             = sfBuilderProvider.builders.sfField;
@@ -288,16 +288,16 @@ function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
         button: {template: __WEBPACK_IMPORTED_MODULE_10__spark_submit_html___default.a, builder: defaults},
         checkbox: {template: __WEBPACK_IMPORTED_MODULE_2__spark_checkbox_html___default.a, builder: defaults},
         checkboxes: {template: __WEBPACK_IMPORTED_MODULE_3__spark_checkboxes_html___default.a, builder: [ sfField, ngModelOptions, ngModel, array, condition ]},
-        conditional: {template: __WEBPACK_IMPORTED_MODULE_8__spark_section_html___default.a, builder: [ sfField, simpvarransclusion, condition ]},
+        conditional: {template: __WEBPACK_IMPORTED_MODULE_8__spark_section_html___default.a, builder: [ sfField, simpleTransclusion, condition ]},
         'default': {template: __WEBPACK_IMPORTED_MODULE_4__spark_default_html___default.a, builder: defaults},
-        fieldset: {template: __WEBPACK_IMPORTED_MODULE_5__spark_fieldset_html___default.a, builder: [ sfField, simpvarransclusion, condition ]},
+        fieldset: {template: __WEBPACK_IMPORTED_MODULE_5__spark_fieldset_html___default.a, builder: [ sfField, simpleTransclusion, condition ]},
         help: {template: __WEBPACK_IMPORTED_MODULE_6__spark_help_html___default.a, builder: defaults},
         number: {template: __WEBPACK_IMPORTED_MODULE_4__spark_default_html___default.a, builder: defaults.concat(numeric)},
         password: {template: __WEBPACK_IMPORTED_MODULE_4__spark_default_html___default.a, builder: defaults},
         radios: {template: __WEBPACK_IMPORTED_MODULE_7__spark_radios_html___default.a, builder: defaults},
         // 'radios-inline': {template: radiosInlineTemplate, builder: defaults},
         // radiobuttons: {template: radiobuttonsTemplate, builder: defaults},
-        section: {template: __WEBPACK_IMPORTED_MODULE_8__spark_section_html___default.a, builder: [ sfField, simpvarransclusion, condition ]},
+        section: {template: __WEBPACK_IMPORTED_MODULE_8__spark_section_html___default.a, builder: [ sfField, simpleTransclusion, condition ]},
         select: {template: __WEBPACK_IMPORTED_MODULE_9__spark_select_html___default.a, builder: [ selectPlaceholder ].concat(defaults)},
         submit: {template: __WEBPACK_IMPORTED_MODULE_10__spark_submit_html___default.a, builder: defaults},
         tabarray: {template: __WEBPACK_IMPORTED_MODULE_11__spark_tabarray_html___default.a, builder: [ sfField, ngModelOptions, ngModel, array, condition ]},

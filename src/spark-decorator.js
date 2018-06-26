@@ -30,7 +30,7 @@ decoratorConfig.$inject = [
  * @param sfBuilderProvider
  */
 function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
-    var simpvarransclusion  = sfBuilderProvider.builders.simpvarransclusion;
+    var simpleTransclusion  = sfBuilderProvider.builders.simpleTransclusion;
     var ngModelOptions      = sfBuilderProvider.builders.ngModelOptions;
     var ngModel             = sfBuilderProvider.builders.ngModel;
     var sfField             = sfBuilderProvider.builders.sfField;
@@ -45,16 +45,16 @@ function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
         button: {template: submitTemplate, builder: defaults},
         checkbox: {template: checkboxTemplate, builder: defaults},
         checkboxes: {template: checkboxesTemplate, builder: [ sfField, ngModelOptions, ngModel, array, condition ]},
-        conditional: {template: sectionTemplate, builder: [ sfField, simpvarransclusion, condition ]},
+        conditional: {template: sectionTemplate, builder: [ sfField, simpleTransclusion, condition ]},
         'default': {template: defaultTemplate, builder: defaults},
-        fieldset: {template: fieldsetTemplate, builder: [ sfField, simpvarransclusion, condition ]},
+        fieldset: {template: fieldsetTemplate, builder: [ sfField, simpleTransclusion, condition ]},
         help: {template: helpTemplate, builder: defaults},
         number: {template: defaultTemplate, builder: defaults.concat(numeric)},
         password: {template: defaultTemplate, builder: defaults},
         radios: {template: radiosTemplate, builder: defaults},
         // 'radios-inline': {template: radiosInlineTemplate, builder: defaults},
         // radiobuttons: {template: radiobuttonsTemplate, builder: defaults},
-        section: {template: sectionTemplate, builder: [ sfField, simpvarransclusion, condition ]},
+        section: {template: sectionTemplate, builder: [ sfField, simpleTransclusion, condition ]},
         select: {template: selectTemplate, builder: [ selectPlaceholder ].concat(defaults)},
         submit: {template: submitTemplate, builder: defaults},
         tabarray: {template: tabarrayTemplate, builder: [ sfField, ngModelOptions, ngModel, array, condition ]},
