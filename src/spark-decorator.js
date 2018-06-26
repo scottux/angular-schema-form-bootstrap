@@ -66,7 +66,7 @@ function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
     // @todo wtf??
     function tabs(args) {
         if (args.form.tabs && args.form.tabs.length > 0) {
-            var tabContent = args.fieldFrag.querySelector('.tab-content');
+            var tabContent = args.fieldFrag.querySelector('.sprk-c-Tabs__content');
 
             args.form.tabs.forEach(function (tab, index) {
                 var evalExpr = '(evalExpr(' + args.path + '.tabs[' + index + ']' +

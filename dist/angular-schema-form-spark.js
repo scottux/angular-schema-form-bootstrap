@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-spark
  * @version 1.0.0-alpha.5
- * @date Tue, 26 Jun 2018 15:05:28 GMT
+ * @date Tue, 26 Jun 2018 15:23:47 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-spark
  * @license MIT
  * Copyright (c) 2014-2018 JSON Schema Form
@@ -149,7 +149,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/spark/radios.html';
-var html = "<div\n    class=\"sprk-b-InputContainer schema-form-radios {{::form.htmlClass + ' ' + idClass}}\"\n    ng-class=\"{\n      'has-error': form.disableErrorState !== true &&  hasError(),\n      'has-success': form.disableSuccessState !== true && hasSuccess(),\n      'required': form.required === true\n    }\">\n    <fieldset>\n        <legend>\n            <label\n                class=\"sprk-b-Label {{::form.labelHtmlClass}}\"\n                sf-field-model\n                schema-validate=\"form\"\n                ng-show=\"showTitle()\">{{form.title}}</label>\n        </legend>\n        <div class=\"sprk-b-SelectionContainer\" ng-repeat=\"tm in form.titleMap\">\n            <label>\n                <input\n                    type=\"radio\"\n                    class=\"{{::form.fieldHtmlClass}}\"\n                    sf-changed=\"form\"\n                    ng-disabled=\"form.readonly\"\n                    sf-field-model\n                    ng-value=\"tm.value\"\n                    name=\"{{::fieldId(true, false)}}\" />\n                <span class=\"sprk-b-Label sprk-b-Label--inline sprk-u-mls\" ng-bind-html=\"tm.name\"></span>\n            </label>\n        </div>\n    </fieldset>\n    <div class=\"sprk-b-HelperText\" sf-message=\"form.description\"></div>\n</div>\n";
+var html = "<div\n    class=\"sprk-b-InputContainer schema-form-radios {{::form.htmlClass + ' ' + idClass}}\"\n    ng-class=\"{'has-error': form.disableErrorState !== true &&  hasError(),'has-success': form.disableSuccessState !== true && hasSuccess(),'required': form.required === true}\">\n    <fieldset>\n        <legend>\n            <label\n                class=\"sprk-b-Label {{::form.labelHtmlClass}}\"\n                sf-field-model\n                schema-validate=\"form\"\n                ng-show=\"showTitle()\">{{form.title}}</label>\n        </legend>\n        <div class=\"sprk-b-SelectionContainer\" ng-repeat=\"tm in form.titleMap\">\n            <label>\n                <input\n                    type=\"radio\"\n                    class=\"{{::form.fieldHtmlClass}}\"\n                    sf-changed=\"form\"\n                    ng-disabled=\"form.readonly\"\n                    sf-field-model\n                    ng-value=\"tm.value\"\n                    name=\"{{::fieldId(true, false)}}\" />\n                <span class=\"sprk-b-Label sprk-b-Label--inline sprk-u-mls\" ng-bind-html=\"tm.name\"></span>\n            </label>\n        </div>\n    </fieldset>\n    <div class=\"sprk-b-HelperText\" sf-message=\"form.description\"></div>\n</div>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -194,7 +194,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/spark/tabs.html';
-var html = "<div ng-init=\"selected = { tab: 0 }\" class=\"sprk-c-Tabs {{::form.htmlClass + ' ' + idClass}}\" role=\"tablist\" aria-orientation=\"horizontal\" data-sprk-navigation=\"tabs\">\n  <div class=\"sprk-c-Tabs__buttons\">\n    <button role=\"tab\" ng-repeat=\"tab in form.tabs\"\n        ng-disabled=\"form.readonly\"\n            class=\"sprk-c-Tabs__button\"\n        ng-click=\"$event.preventDefault() || (selected.tab = $index)\"\n        ng-class=\"{'sprk-c-Tabs__button--active': selected.tab === $index}\">\n        {{ tab.title }}</button>\n  </div>\n\n  <div class=\"sprk-c-Tabs__content {{::form.fieldHtmlClass}}\" role=\"tabpanel\">\n  </div>\n</div>\n";
+var html = "<div ng-init=\"selected = { tab: 0 }\" class=\"sprk-c-Tabs {{::form.htmlClass + ' ' + idClass}}\" role=\"tablist\" aria-orientation=\"horizontal\" data-sprk-navigation=\"tabs\">\n  <div class=\"sprk-c-Tabs__buttons\">\n    <button role=\"tab\" ng-repeat=\"tab in form.tabs\"\n        ng-disabled=\"form.readonly\"\n        class=\"sprk-c-Tabs__button\"\n        ng-click=\"$event.preventDefault() || (selected.tab = $index)\"\n        ng-class=\"{'sprk-c-Tabs__button--active': selected.tab === $index}\">{{ tab.title }}</button>\n  </div>\n\n  <div class=\"sprk-c-Tabs__content {{::form.fieldHtmlClass}}\" role=\"tabpanel\"></div>\n</div>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -309,7 +309,7 @@ function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
     // @todo wtf??
     function tabs(args) {
         if (args.form.tabs && args.form.tabs.length > 0) {
-            var tabContent = args.fieldFrag.querySelector('.tab-content');
+            var tabContent = args.fieldFrag.querySelector('.sprk-c-Tabs__content');
 
             args.form.tabs.forEach(function (tab, index) {
                 var evalExpr = '(evalExpr(' + args.path + '.tabs[' + index + ']' +
