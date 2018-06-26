@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-spark
  * @version 1.0.0-alpha.5
- * @date Tue, 26 Jun 2018 14:27:52 GMT
+ * @date Tue, 26 Jun 2018 14:54:23 GMT
  * @link https://github.com/json-schema-form/angular-schema-form-spark
  * @license MIT
  * Copyright (c) 2014-2018 JSON Schema Form
@@ -86,7 +86,7 @@ __webpack_require__(15);
 /***/ (function(module, exports) {
 
 var path = '/spark/actions.html';
-var html = "<div class=\"sprk-o-Stack sprk-o-Stack--medium schema-form-actions {{::form.htmlClass + ' ' + idClass}}\">\n    <div class=\"sprk-o-Stack__item\" ng-repeat-start=\"item in form.items\">\n        <input\n            type=\"submit\"\n            class=\"sprk-c-Button {{ item.style || '' }} {{::form.fieldHtmlClass}}\"\n            value=\"{{item.title}}\"\n            ng-if=\"item.type === 'submit'\">\n        <button\n            class=\"sprk-c-Button {{ item.style || '' }} {{::form.fieldHtmlClass}}\"\n            type=\"button\"\n            ng-disabled=\"form.readonly\"\n            ng-if=\"item.type !== 'submit'\"\n            ng-click=\"buttonClick($event,item)\"><span ng-if=\"item.icon\" class=\"{{item.icon}}\"></span>{{item.title}}</button>\n    </div>\n</div>\n";
+var html = "<div class=\"sprk-o-Stack sprk-o-Stack--medium schema-form-actions {{::form.htmlClass + ' ' + idClass}}\">\n    <div class=\"sprk-o-Stack__item\" ng-repeat=\"item in form.items\">\n        <input\n            type=\"submit\"\n            class=\"sprk-c-Button {{ item.style || '' }} {{::form.fieldHtmlClass}}\"\n            value=\"{{item.title}}\"\n            ng-if=\"item.type === 'submit'\" />\n        <button\n            class=\"sprk-c-Button {{ item.style || '' }} {{::form.fieldHtmlClass}}\"\n            type=\"button\"\n            ng-disabled=\"form.readonly\"\n            ng-if=\"item.type !== 'submit'\"\n            ng-click=\"buttonClick($event,item)\"><span ng-if=\"item.icon\" class=\"{{item.icon}}\"></span>{{item.title}}</button>\n    </div>\n</div>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
