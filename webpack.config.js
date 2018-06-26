@@ -8,13 +8,13 @@ const webpack = require('webpack');
 const path = require('path');
 const package = require('./package.json');
 const buildDate = new Date();
-console.log('Angular Schema Form Bootstrap v' + package.version);
+console.log('Angular Schema Form Spark v' + package.version);
 const plugins = [
   new webpack.BannerPlugin(
-    'angular-schema-form-bootstrap\n' +
+    'angular-schema-form-spark\n' +
     '@version ' + package.version + '\n' +
     '@date ' + buildDate.toUTCString() + '\n' +
-    '@link https://github.com/json-schema-form/angular-schema-form-bootstrap\n' +
+    '@link https://github.com/json-schema-form/angular-schema-form-spark\n' +
     '@license MIT\n' +
     'Copyright (c) 2014-' + buildDate.getFullYear() + ' JSON Schema Form'),
   /* Minification only occurs if the output is named .min */
@@ -27,8 +27,8 @@ const plugins = [
 
 module.exports = {
   entry: {
-    'angular-schema-form-bootstrap': [ path.join(__dirname, 'src', 'module') ],
-    'angular-schema-form-bootstrap-bundled': [ 'angular-schema-form', path.join(__dirname, 'src', 'module') ],
+    'angular-schema-form-spark': [ path.join(__dirname, 'src', 'module') ],
+    'angular-schema-form-spark-bundled': [ 'angular-schema-form', path.join(__dirname, 'src', 'module') ],
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -38,7 +38,7 @@ module.exports = {
   resolve: {
     modules: [
       path.join(__dirname, "src"),
-      path.join(__dirname, "src", "bootstrap"),
+      path.join(__dirname, "src", "spark"),
       path.join(__dirname, "..", "angular-schema-form", "dist"),
       'node_modules',
     ],
