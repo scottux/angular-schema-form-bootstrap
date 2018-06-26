@@ -1,20 +1,20 @@
 // ngtemplate-loader embeds the html on build
-import actionsTemplate from './bootstrap/actions.html';
-import arrayTemplate from './bootstrap/array.html';
-import checkboxTemplate from './bootstrap/checkbox.html';
-import checkboxesTemplate from './bootstrap/checkboxes.html';
-import defaultTemplate from './bootstrap/default.html';
-import fieldsetTemplate from './bootstrap/fieldset.html';
-import helpTemplate from './bootstrap/help.html';
-import radiobuttonsTemplate from './bootstrap/radio-buttons.html';
-import radiosTemplate from './bootstrap/radios.html';
-import radiosInlineTemplate from './bootstrap/radios-inline.html';
-import sectionTemplate from './bootstrap/section.html';
-import selectTemplate from './bootstrap/select.html';
-import submitTemplate from './bootstrap/submit.html';
-import tabarrayTemplate from './bootstrap/tabarray.html';
-import tabsTemplate from './bootstrap/tabs.html';
-import textareaTemplate from './bootstrap/textarea.html';
+import actionsTemplate from './spark/actions.html';
+import arrayTemplate from './spark/array.html';
+import checkboxTemplate from './spark/checkbox.html';
+import checkboxesTemplate from './spark/checkboxes.html';
+import defaultTemplate from './spark/default.html';
+import fieldsetTemplate from './spark/fieldset.html';
+import helpTemplate from './spark/help.html';
+import radiobuttonsTemplate from './spark/radio-buttons.html';
+import radiosTemplate from './spark/radios.html';
+import radiosInlineTemplate from './spark/radios-inline.html';
+import sectionTemplate from './spark/section.html';
+import selectTemplate from './spark/select.html';
+import submitTemplate from './spark/submit.html';
+import tabarrayTemplate from './spark/tabarray.html';
+import tabsTemplate from './spark/tabs.html';
+import textareaTemplate from './spark/textarea.html';
 
 angular
   .module('schemaForm')
@@ -26,7 +26,7 @@ decoratorConfig.$inject = [
 
 function decoratorConfig(
     schemaFormProvider, decoratorsProvider, sfBuilderProvider, sfPathProvider, $injector) {
-  var base = 'decorators/bootstrap/';
+  var base = 'decorators/spark/';
 
   var simpleTransclusion  = sfBuilderProvider.builders.simpleTransclusion;
   var ngModelOptions      = sfBuilderProvider.builders.ngModelOptions;
@@ -88,7 +88,7 @@ function decoratorConfig(
   };
 
   var defaults = [sfField, ngModel, ngModelOptions, condition];
-  decoratorsProvider.defineDecorator('bootstrapDecorator', {
+  decoratorsProvider.defineDecorator('sparkDecorator', {
     actions: {template: actionsTemplate, builder: defaults},
     array: {template: arrayTemplate, builder: [ sfField, ngModelOptions, ngModel, array, condition ]},
     button: {template: submitTemplate, builder: defaults},
