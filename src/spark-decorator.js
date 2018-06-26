@@ -18,13 +18,13 @@ import textareaTemplate from './bootstrap/textarea.html';
 
 angular
   .module('schemaForm')
-  .config(bootstrapDecoratorConfig);
+  .config(decoratorConfig);
 
-bootstrapDecoratorConfig.$inject = [
+decoratorConfig.$inject = [
   'schemaFormProvider', 'schemaFormDecoratorsProvider', 'sfBuilderProvider', 'sfPathProvider', '$injector'
 ];
 
-function bootstrapDecoratorConfig(
+function decoratorConfig(
     schemaFormProvider, decoratorsProvider, sfBuilderProvider, sfPathProvider, $injector) {
   var base = 'decorators/bootstrap/';
 
