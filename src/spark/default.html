@@ -1,11 +1,11 @@
-<div class="form-group {{::form.htmlClass + ' schema-form-' + form.type + ' ' + idClass}}"
+<div class="sprk-b-InputContainer {{::form.htmlClass + ' schema-form-' + form.type + ' ' + idClass}}"
      ng-class="{
        'has-error': form.disableErrorState !== true && hasError(),
        'has-success': form.disableSuccessState !== true && hasSuccess(),
        'has-feedback': form.feedback !== false,
        'required': form.required === true
      }">
-  <label class="control-label {{::form.labelHtmlClass}}" ng-class="{'sr-only': !showTitle()}" for="{{::fieldId(true, false)}}">{{form.title}}</label>
+  <label class="sprk-b-Label {{::form.labelHtmlClass}}" ng-class="{'sr-only': !showTitle()}" for="{{::fieldId(true, false)}}">{{form.title}}</label>
 
   <input ng-if="!form.fieldAddonLeft && !form.fieldAddonRight"
          ng-show="::form.key"
@@ -13,7 +13,7 @@
          step="any"
          sf-changed="form"
          placeholder="{{::form.placeholder}}"
-         class="form-control {{::form.fieldHtmlClass}}"
+         class="sprk-b-TextInput sprk-u-Width-100 {{::form.fieldHtmlClass}}"
          id="{{::fieldId(true, false)}}"
          sf-field-model
          ng-disabled="form.readonly"
@@ -31,7 +31,7 @@
            step="any"
            sf-changed="form"
            placeholder="{{::form.placeholder}}"
-           class="form-control {{::form.fieldHtmlClass}}"
+           class="sprk-b-TextInput sprk-u-Width-100 {{::form.fieldHtmlClass}}"
            id="{{::fieldId(true, false)}}"
            sf-field-model
            ng-disabled="form.readonly"
@@ -53,5 +53,5 @@
         id="{{::fieldId(true, true) + '-status'}}"
         class="sr-only">{{ hasSuccess() ? '(success)' : '(error)' }}</span>
 
-  <div class="help-block" sf-message="form.description"></div>
+  <div class="sprk-b-HelperText" sf-message="form.description"></div>
 </div>
