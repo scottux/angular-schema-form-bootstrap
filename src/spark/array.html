@@ -1,30 +1,29 @@
 <div class="schema-form-array {{::form.htmlClass + ' ' + idClass}}" sf-field-model="sf-new-array" sf-new-array>
   <label class="sprk-b-Label" ng-show="showTitle()">{{ form.title }}</label>
-  <ol class="list-group" sf-field-model ui-sortable="form.sortOptions">
-    <li class="list-group-item {{::form.fieldHtmlClass}}"
+  <div class="sprk-o-Box" sf-field-model ui-sortable="form.sortOptions">
+    <div class="{{::form.fieldHtmlClass}}"
         sf-field-model="ng-repeat"
         ng-repeat="item in $$value$$ track by $id(trackBy(item, $index))">
       <button ng-hide="form.readonly || form.remove === null"
               ng-click="deleteFromArray(item)"
               ng-disabled="form.schema.minItems >= modelArray.length"
-              style="position: relative; z-index: 20;"
-              type="button" class="close pull-right">
-              <span aria-hidden="true">&times;</span><span class="sprk-u-ScreenReaderText">Close</span>
+              type="button"
+              class="sprk-c-Button {{ form.style.remove || 'sprk-c-Button--removal' }}">
+        {{ form.remove || 'Remove'}}
       </button>
       <div schema-form-array-items sf-key-controller sf-parent-key="[{{form.key.join('][')}}]" sf-index="{{$index}}"></div>
-    </li>
-  </ol>
-  <div class="clearfix" style="padding: 15px;" ng-model="modelArray" schema-validate="form">
-    <div class="help-block"
+    </div>
+  </div>
+  <div ng-model="modelArray" schema-validate="form">
+    <div ng-class="{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}"
          ng-show="(hasError() && errorMessage(schemaError())) || form.description"
-         ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description"></div>
-
+         ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description">
+    </div>
     <button ng-hide="form.readonly || form.add === null"
             ng-click="appendToArray()"
             ng-disabled="form.schema.maxItems <= modelArray.length"
             type="button"
-            class="btn {{ form.style.add || 'btn-default' }} pull-right">
-      <i class="glyphicon glyphicon-plus"></i>
+            class="sprk-c-Button {{ form.style.add }} pull-right">
       {{ form.add || 'Add'}}
     </button>
   </div>

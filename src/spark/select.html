@@ -1,13 +1,8 @@
-<div class="sprk-b-InputContainer {{::form.htmlClass + ' ' + idClass}} schema-form-select"
-     ng-class="{
-       'has-error': form.disableErrorState !== true && hasError(),
-       'has-success': form.disableSuccessState !== true && hasSuccess(),
-       'has-feedback': form.feedback !== false,
-       'required': form.required === true
-     }">
-  <label class="sprk-b-Label {{::form.labelHtmlClass}}" ng-show="showTitle()" for="{{::fieldId(true, false)}}">
-    {{form.title}}
-  </label>
+<div class="sprk-b-InputContainer {{::form.htmlClass + ' ' + idClass}} schema-form-select">
+  <label class="sprk-b-Label {{::form.labelHtmlClass}}"
+         ng-class="{'sprk-u-ScreenReaderText': !showTitle()}"
+         for="{{::fieldId(true, false)}}">{{form.title}}</label>
+
   <select sf-field-model
           id="{{::fieldId(true, false)}}"
           ng-disabled="form.readonly"
@@ -17,5 +12,11 @@
           ng-options="item.value as item.name group by item.group for item in form.titleMap"
           name="{{::fieldId(true, false)}}">
   </select>
-  <div class="sprk-b-HelperText" sf-message="form.description"></div>
+
+  <span ng-if="hasError() || hasSuccess()"
+        id="{{::fieldId(true, true) + '-status'}}"
+        class="sprk-u-ScreenReaderText">{{ hasSuccess() ? '(success)' : '(error)' }}</span>
+
+  <div ng-class="{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}"
+       sf-message="form.description"></div>
 </div>

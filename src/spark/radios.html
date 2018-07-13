@@ -23,5 +23,6 @@
             </label>
         </div>
     </fieldset>
-    <div class="sprk-b-HelperText" sf-message="form.description"></div>
+    <div ng-class="{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}"
+         sf-message="form.description"></div>
 </div>

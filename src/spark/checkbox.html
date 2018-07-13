@@ -15,5 +15,6 @@
            name="{{::fieldId(true, false)}}">
     <span class="sprk-b-Label--inline sprk-u-mls" ng-bind-html="form.title"></span>
   </label>
-  <div class="sprk-b-HelperText" sf-message="form.description"></div>
+  <div ng-class="{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}"
+       sf-message="form.description"></div>
 </div>

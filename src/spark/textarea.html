@@ -19,10 +19,10 @@
 
   <div ng-if="form.fieldAddonLeft || form.fieldAddonRight"
        ng-class="{'input-group': (form.fieldAddonLeft || form.fieldAddonRight)}">
-    <span ng-if="form.fieldAddonLeft"
-          class="input-group-addon"
-          ng-bind-html="form.fieldAddonLeft"></span>
-    <textarea class="sprk-b-TextInput  sprk-u-Width-100 {{::form.fieldHtmlClass}}"
+    <!--<span ng-if="form.fieldAddonLeft"-->
+          <!--class="input-group-addon"-->
+          <!--ng-bind-html="form.fieldAddonLeft"></span>-->
+    <textarea class="sprk-b-TextInput sprk-u-Width-100 {{::form.fieldHtmlClass}}"
               id="{{::fieldId(true, false)}}"
               sf-changed="form"
               ng-attr-placeholder="{{::form.placeholder}}"
@@ -30,10 +30,11 @@
               sf-field-model
               schema-validate="form"
               name="{{::fieldId(true, false)}}"></textarea>
-    <span ng-if="form.fieldAddonRight"
-          class="input-group-addon"
-          ng-bind-html="form.fieldAddonRight"></span>
+    <!--<span ng-if="form.fieldAddonRight"-->
+          <!--class="input-group-addon"-->
+          <!--ng-bind-html="form.fieldAddonRight"></span>-->
   </div>
 
-  <span class="sprk-b-HelperText" sf-message="form.description"></span>
+  <div ng-class="{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}"
+       sf-message="form.description"></div>
 </div>
