@@ -1,7 +1,7 @@
 /*!
  * angular-schema-form-spark
  * @version 1.0.0-alpha.5
- * @date Sat, 14 Jul 2018 16:15:54 GMT
+ * @date Sat, 14 Jul 2018 16:30:02 GMT
  * @link https://github.com/scottux/angular-schema-form-spark
  * @license MIT
  * Copyright (c) 2014-2018 JSON Schema Form

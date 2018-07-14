@@ -26,12 +26,18 @@
     "angular-schema-form": "1.0.0-alpha.4"
   },
   "devDependencies": {
+    "angular": "1.6.x",
+    "angular-sanitize": "1.6.x",
     "angular-ui-ace": "bower",
     "angular-schema-form-datepicker": ">= 0.1.0",
     "angular-schema-form-colorpicker": ">= 0.1.0",
     "jquery": "~2.1.1",
-    "angular-mocks": ">= 1.2",
+    "angular-mocks": "1.6.x",
     "tx-tinymce": ">= 0.0.5",
     "angular-ui-sortable": ">=0.12.11"
+  },
+  "resolutions": {
+    "jquery": "~2.1.1",
+    "angular": "1.6.x"
   }
 }
