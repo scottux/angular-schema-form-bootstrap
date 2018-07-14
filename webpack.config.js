@@ -14,7 +14,7 @@ const plugins = [
     'angular-schema-form-spark\n' +
     '@version ' + package.version + '\n' +
     '@date ' + buildDate.toUTCString() + '\n' +
-    '@link https://github.com/json-schema-form/angular-schema-form-spark\n' +
+    '@link https://github.com/scottux/angular-schema-form-spark\n' +
     '@license MIT\n' +
     'Copyright (c) 2014-' + buildDate.getFullYear() + ' JSON Schema Form'),
   /* Minification only occurs if the output is named .min */

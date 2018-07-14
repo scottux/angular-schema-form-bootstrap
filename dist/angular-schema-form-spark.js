@@ -1,8 +1,8 @@
 /*!
  * angular-schema-form-spark
  * @version 1.0.0-alpha.5
- * @date Fri, 13 Jul 2018 15:30:28 GMT
- * @link https://github.com/json-schema-form/angular-schema-form-spark
+ * @date Sat, 14 Jul 2018 16:15:54 GMT
+ * @link https://github.com/scottux/angular-schema-form-spark
  * @license MIT
  * Copyright (c) 2014-2018 JSON Schema Form
  */
@@ -203,7 +203,7 @@ module.exports = path;
 /***/ (function(module, exports) {
 
 var path = '/spark/textarea.html';
-var html = "<div class=\"sprk-b-InputContainer has-feedback {{::form.htmlClass + ' ' + idClass}} schema-form-textarea\"\n     ng-class=\"{\n       'has-error': form.disableErrorState !== true && hasError(),\n       'has-success': form.disableSuccessState !== true && hasSuccess(),\n       'has-feedback': form.feedback !== false,\n       'required': form.required === true\n     }\">\n  <label class=\"sprk-b-Label {{::form.labelHtmlClass}}\" ng-class=\"{'sprk-u-ScreenReaderText': !showTitle()}\" for=\"{{::fieldId(true, false)}}\">{{form.title}}</label>\n\n  <textarea ng-if=\"!form.fieldAddonLeft && !form.fieldAddonRight\"\n            class=\"sprk-b-TextInput  sprk-u-Width-100 {{::form.fieldHtmlClass}}\"\n            id=\"{{::fieldId(true, false)}}\"\n            sf-changed=\"form\"\n            ng-attr-placeholder=\"{{::form.placeholder}}\"\n            ng-disabled=\"form.readonly\"\n            sf-field-model\n            schema-validate=\"form\"\n            name=\"{{::fieldId(true, false)}}\"></textarea>\n\n  <div ng-if=\"form.fieldAddonLeft || form.fieldAddonRight\"\n       ng-class=\"{'input-group': (form.fieldAddonLeft || form.fieldAddonRight)}\">\n    <!--<span ng-if=\"form.fieldAddonLeft\"-->\n          <!--class=\"input-group-addon\"-->\n          <!--ng-bind-html=\"form.fieldAddonLeft\"></span>-->\n    <textarea class=\"sprk-b-TextInput sprk-u-Width-100 {{::form.fieldHtmlClass}}\"\n              id=\"{{::fieldId(true, false)}}\"\n              sf-changed=\"form\"\n              ng-attr-placeholder=\"{{::form.placeholder}}\"\n              ng-disabled=\"form.readonly\"\n              sf-field-model\n              schema-validate=\"form\"\n              name=\"{{::fieldId(true, false)}}\"></textarea>\n    <!--<span ng-if=\"form.fieldAddonRight\"-->\n          <!--class=\"input-group-addon\"-->\n          <!--ng-bind-html=\"form.fieldAddonRight\"></span>-->\n  </div>\n\n  <div ng-class=\"{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}\"\n       sf-message=\"form.description\"></div>\n</div>\n";
+var html = "<div class=\"sprk-b-InputContainer has-feedback {{::form.htmlClass + ' ' + idClass}} schema-form-textarea\"\n     ng-class=\"{\n       'has-error': form.disableErrorState !== true && hasError(),\n       'has-success': form.disableSuccessState !== true && hasSuccess(),\n       'has-feedback': form.feedback !== false,\n       'required': form.required === true\n     }\">\n  <label class=\"sprk-b-Label {{::form.labelHtmlClass}}\" ng-class=\"{'sprk-u-ScreenReaderText': !showTitle()}\" for=\"{{::fieldId(true, false)}}\">{{form.title}}</label>\n\n  <textarea class=\"sprk-b-TextInput  sprk-u-Width-100 {{::form.fieldHtmlClass}}\"\n            id=\"{{::fieldId(true, false)}}\"\n            sf-changed=\"form\"\n            ng-attr-placeholder=\"{{::form.placeholder}}\"\n            ng-disabled=\"form.readonly\"\n            sf-field-model\n            schema-validate=\"form\"\n            name=\"{{::fieldId(true, false)}}\"></textarea>\n\n  <div ng-class=\"{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}\"\n       sf-message=\"form.description\"></div>\n</div>\n";
 window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
@@ -249,9 +249,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-//import radiobuttonsTemplate from './spark/radio-buttons.html';
 
-//import radiosInlineTemplate from './spark/radios-inline.html';
 
 
 
@@ -295,8 +293,6 @@ function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
         number: {template: __WEBPACK_IMPORTED_MODULE_4__spark_default_html___default.a, builder: defaults.concat(numeric)},
         password: {template: __WEBPACK_IMPORTED_MODULE_4__spark_default_html___default.a, builder: defaults},
         radios: {template: __WEBPACK_IMPORTED_MODULE_7__spark_radios_html___default.a, builder: defaults},
-        // 'radios-inline': {template: radiosInlineTemplate, builder: defaults},
-        // radiobuttons: {template: radiobuttonsTemplate, builder: defaults},
         section: {template: __WEBPACK_IMPORTED_MODULE_8__spark_section_html___default.a, builder: [ sfField, simpleTransclusion, condition ]},
         select: {template: __WEBPACK_IMPORTED_MODULE_9__spark_select_html___default.a, builder: [ selectPlaceholder ].concat(defaults)},
         submit: {template: __WEBPACK_IMPORTED_MODULE_10__spark_submit_html___default.a, builder: defaults},
@@ -308,23 +304,26 @@ function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
     // Tabs is so bootstrap specific that it stays here.
     // @todo wtf??
     function tabs(args) {
-        if (args.form.tabs && args.form.tabs.length > 0) {
-            var tabContent = args.fieldFrag.querySelector('.sprk-c-Tabs__content');
+        var tabContent;
+
+        if (args.form.tabs && args.form.tabs.length) {
+            tabContent = args.fieldFrag.querySelector('.sprk-c-Tabs__content');
 
             args.form.tabs.forEach(function (tab, index) {
+                var childFrag;
                 var evalExpr = '(evalExpr(' + args.path + '.tabs[' + index + ']' +
                     '.condition, { model: model, "arrayIndex": $index}))';
                 var div = document.createElement('div');
+
                 div.className = 'tab-pane';
                 div.setAttribute('ng-disabled', 'form.readonly');
                 div.setAttribute('ng-show', 'selected.tab === ' + index);
                 div.setAttribute('ng-class', '{active: selected.tab === ' + index + '}');
-
-                if(!!tab.condition) {
+                if (!!tab.condition) {
                     div.setAttribute('ng-if', evalExpr);
                 }
 
-                var childFrag = args.build(tab.items, args.path + '.tabs[' + index + '].items', args.state);
+                childFrag = args.build(tab.items, args.path + '.tabs[' + index + '].items', args.state);
                 div.appendChild(childFrag);
                 tabContent.appendChild(div);
             });
@@ -332,9 +331,14 @@ function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
     }
 
     function selectPlaceholder(args) {
+        var selectBox;
+        var option;
+        var method;
+        var condition = '$$value$$ === undefined';
+
         if (args.form.placeholder) {
-            var selectBox = args.fieldFrag.querySelector('select');
-            var option = document.createElement('option');
+            selectBox = args.fieldFrag.querySelector('select');
+            option = document.createElement('option');
             option.setAttribute('value', '');
 
             /* We only want the placeholder to show when we do not have a value on the model.
@@ -346,12 +350,8 @@ function decoratorConfig(decoratorsProvider, sfBuilderProvider) {
              * angular > 1.4 does a emptyOption.attr('selected', true)
              * which does not like the ng-if comment.
              */
-            if (angular.version.major === 1 && angular.version.minor < 4) {
-                option.setAttribute('ng-if', '$$value$$ === undefined');
-            } else {
-                option.setAttribute('ng-show', '$$value$$ === undefined');
-            }
-
+            method = (angular.version.major === 1 && angular.version.minor < 4) ? 'ng-if' : 'ng-show';
+            option.setAttribute(method, condition);
             option.textContent = args.form.placeholder;
 
             selectBox.appendChild(option);
