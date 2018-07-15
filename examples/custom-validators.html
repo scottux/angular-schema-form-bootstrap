@@ -2,8 +2,7 @@
 <html>
   <head>
     <title>Custom validators, async validators etc</title>
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="spark.css">
   </head>
   <body ng-app="test" class="container" ng-controller="TestCtrl">
 
@@ -24,11 +23,10 @@
 
   <script type="text/javascript" src="../bower_components/objectpath/lib/ObjectPath.js"></script>
 
-  <script type="text/javascript" src="../bower_components/angular-schema-form/dist/schema-form.js"></script>
-  <script type="text/javascript" src="../bootstrap-decorator.js"></script>
+  <script type="text/javascript" src="../dist/angular-schema-form-spark-bundled.js"></script>
 
     <script>
-      angular.module('test', ['schemaForm']).controller('TestCtrl', function($scope, $q, $timeout) {
+      angular.module('test', ['schemaForm']).controller('TestCtrl', function ($scope, $q, $timeout) {
 
         $scope.schema = {
             "type": "object",
@@ -57,9 +55,10 @@
               key: 'name',
               placeholder: 'Anything but "Bob"',
               $asyncValidators: {
-                'async': function(name) {
+                'async': function (name) {
                   var deferred = $q.defer();
-                  $timeout(function(){
+
+                  $timeout(function () {
                     if (angular.isString(name) && name.toLowerCase().indexOf('bob') !== -1) {
                       deferred.reject();
                     } else {
@@ -77,8 +76,8 @@
             {
               key: 'email',
               placeholder: 'Not MY email',
-              ngModel: function(ngModel) {
-                ngModel.$validators.myMail = function(value) {
+              ngModel: function (ngModel) {
+                ngModel.$validators.myMail = function (value) {
                   return value !== 'david.lgj@gmail.com';
                 };
               },
@@ -91,7 +90,7 @@
               "type": "textarea",
               "placeholder": "Make a comment, write 'damn' and check the model",
               $parsers: [
-                function(value) {
+                function (value) {
                   if (value && value.replace) {
                     return value.replace(/(damn|fuck|apple)/,'#!@%&');
                   }
@@ -108,7 +107,7 @@
 
           $scope.model = {};
 
-          $scope.$watch('model', function(value){
+          $scope.$watch('model', function (value){
             if (value) {
               $scope.prettyModel = JSON.stringify(value, undefined, 2);
             }
