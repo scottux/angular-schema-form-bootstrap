@@ -1,5 +1,5 @@
-<fieldset ng-disabled="form.readonly" class="schema-form-fieldset {{::form.htmlClass + ' ' + idClass}}">
-  <legend ng-class="{'sprk-u-ScreenReaderText': !showTitle() }">{{ form.title }}</legend>
+<fieldset ng-disabled="form.readonly" class="sprk-b-Fieldset schema-form-fieldset {{::form.htmlClass + ' ' + idClass}}">
+  <legend class="sprk-b-Legend" ng-class="{'sprk-u-ScreenReaderText': !showTitle() }">{{ form.title }}</legend>
 
   <div ng-class="{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}"
        ng-bind-html="form.description"></div>

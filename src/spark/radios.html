@@ -1,10 +1,13 @@
 <div
     class="sprk-b-InputContainer schema-form-radios {{::form.htmlClass + ' ' + idClass}}"
-    ng-class="{'has-error': form.disableErrorState !== true &&  hasError(),'has-success': form.disableSuccessState !== true && hasSuccess(),'required': form.required === true}">
-    <fieldset>
-        <legend>
-            <label
-                class="sprk-b-Label {{::form.labelHtmlClass}}"
+    ng-class="{
+        'has-error': form.disableErrorState !== true &&  hasError(),
+        'has-success': form.disableSuccessState !== true && hasSuccess(),
+        'required': form.required === true
+    }">
+    <fieldset class="sprk-b-Fieldset">
+        <legend class="sprk-b-Legend">
+            <label class="sprk-b-Label {{::form.labelHtmlClass}}"
                 sf-field-model
                 schema-validate="form"
                 ng-show="showTitle()">{{form.title}}</label>

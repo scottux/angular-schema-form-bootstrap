@@ -1,15 +1,18 @@
-<div class="sprk-b-InputContainer has-feedback {{::form.htmlClass + ' ' + idClass}} schema-form-textarea"
+<div class="sprk-b-InputContainer {{::form.htmlClass + ' ' + idClass}} schema-form-textarea"
      ng-class="{
        'has-error': form.disableErrorState !== true && hasError(),
        'has-success': form.disableSuccessState !== true && hasSuccess(),
        'has-feedback': form.feedback !== false,
        'required': form.required === true
      }">
-  <label class="sprk-b-Label {{::form.labelHtmlClass}}" ng-class="{'sprk-u-ScreenReaderText': !showTitle()}" for="{{::fieldId(true, false)}}">{{form.title}}</label>
+  <label class="sprk-b-Label {{::form.labelHtmlClass}}"
+         ng-class="{'sprk-u-ScreenReaderText': !showTitle()}"
+         for="{{::fieldId(true, false)}}">{{form.title}}</label>
 
-  <textarea class="sprk-b-TextInput  sprk-u-Width-100 {{::form.fieldHtmlClass}}"
+  <textarea class="sprk-b-TextInput sprk-u-Width-100 {{::form.fieldHtmlClass}}"
             id="{{::fieldId(true, false)}}"
             sf-changed="form"
+            ng-class="{'sprk-b-TextInput--error': form.disableErrorState !== true && hasError()}"
             ng-attr-placeholder="{{::form.placeholder}}"
             ng-disabled="form.readonly"
             sf-field-model

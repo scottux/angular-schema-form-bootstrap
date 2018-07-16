@@ -1,122 +1,116 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Custom validators, async validators etc</title>
-    <link rel="stylesheet" href="spark.css">
-  </head>
-  <body ng-app="test" class="container" ng-controller="TestCtrl">
+    <head>
+        <title>Custom validators, async validators etc</title>
+        <link rel="stylesheet" href="spark.css">
+    </head>
+    <body ng-app="example" class="container" ng-controller="TestCtrl">
+        <div class="sprk-o-CenteredColumn">
+            <h1>Demo of custom validators, async validators and parsers</h1>
+            <p>Check the source</p>
+            <form name="theForm">
+                <div sf-schema="schema" sf-form="form" sf-model="model"></div>
+                <p>
+                    The form is <em ng-show="theForm.$pristine">pristine</em><em ng-show="theForm.$dirty">dirty</em>
+                    and <em ng-show="theForm.$valid">valid</em><em ng-show="!theForm.$valid">invalid</em>.
+                </p>
+                <div>{{prettyModel}}</div>
+            </form>
+        </div>
+        <script type="text/javascript" src="../bower_components/tv4/tv4.js"></script>
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <script type="text/javascript" src="../dist/angular-schema-form-spark-bundled.js"></script>
+        <script>
+            angular
+                .module('example', ['schemaForm'])
+                .controller('TestCtrl', function ($scope, $q, $timeout) {
+                    "use strict";
 
-  <h3>Demo of custom validators, async validators and parsers</h3>
-  <span>Check the source</span>
-  <form name="theForm">
-    <div sf-schema="schema" sf-form="form" sf-model="model"></div>
-    <div>
-      The form is <em ng-show="theForm.$pristine">pristine</em><em ng-show="theForm.$dirty">dirty</em>
-      and <em ng-show="theForm.$valid">valid</em><em ng-show="!theForm.$valid">invalid</em>.
-    </div>
-    <div>{{prettyModel}}</div>
-  </form>
+                    $scope.schema = {
+                        "type": "object",
+                        "title": "Comment",
+                        "properties": {
+                            "name": {
+                                "title": "Name",
+                                "type": "string"
+                            },
+                            "email": {
+                                "title": "Email",
+                                "type": "string",
+                                "pattern": "^\\S+@\\S+$",
+                                "description": "Email will be used for evil."
+                            },
+                            "comment": {
+                                "title": "Comment",
+                                "type": "string"
+                            }
+                        },
+                        "required": ["name", "email", "comment"]
+                    };
 
-  <script type="text/javascript" src="../bower_components/tv4/tv4.js"></script>
-  <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
-  <script type="text/javascript" src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+                    $scope.form = [
+                        {
+                            key: 'name',
+                            placeholder: 'Anything but "Bob"',
+                            $asyncValidators: {
+                                'async': function (name) {
+                                    var deferred = $q.defer();
 
-  <script type="text/javascript" src="../bower_components/objectpath/lib/ObjectPath.js"></script>
+                                    $timeout(function () {
+                                        if (angular.isString(name) && name.toLowerCase().indexOf('bob') !== -1) {
+                                            deferred.reject();
+                                        } else {
+                                            deferred.resolve();
+                                        }
+                                    }, 500);
+                                    return deferred.promise;
+                                }
+                            },
+                            validationMessage: {
+                                'async': "Wooohoo thats not an OK name!"
+                            }
+                        },
+                        {
+                            key: 'email',
+                            placeholder: 'NOT me@example.com',
+                            ngModel: function (ngModel) {
+                                ngModel.$validators.myMail = function (value) {
+                                    return value !== 'me@example.com';
+                                };
+                            },
+                            validationMessage: {
+                                'myMail': "Thats my mail!"
+                            }
+                        },
+                        {
+                            "key": "comment",
+                            "type": "textarea",
+                            "placeholder": "Make a comment, write 'damn' and check the model",
+                            $parsers: [
+                                function (value) {
+                                    if (value && value.replace) {
+                                        return value.replace(/(damn|fuck|apple)/, '#!@%&');
+                                    }
+                                    return value;
+                                }
+                            ]
+                        },
+                        {
+                            "type": "submit",
+                            "style": "btn-info",
+                            "title": "OK"
+                        }
+                    ];
 
-  <script type="text/javascript" src="../dist/angular-schema-form-spark-bundled.js"></script>
+                    $scope.model = {};
 
-    <script>
-      angular.module('test', ['schemaForm']).controller('TestCtrl', function ($scope, $q, $timeout) {
-
-        $scope.schema = {
-            "type": "object",
-            "title": "Comment",
-            "properties": {
-              "name":  {
-                "title": "Name",
-                "type": "string"
-              },
-              "email":  {
-                "title": "Email",
-                "type": "string",
-                "pattern": "^\\S+@\\S+$",
-                "description": "Email will be used for evil."
-              },
-              "comment": {
-                "title": "Comment",
-                "type": "string"
-              }
-            },
-            "required": ["name","email","comment"]
-          };
-
-          $scope.form = [
-            {
-              key: 'name',
-              placeholder: 'Anything but "Bob"',
-              $asyncValidators: {
-                'async': function (name) {
-                  var deferred = $q.defer();
-
-                  $timeout(function () {
-                    if (angular.isString(name) && name.toLowerCase().indexOf('bob') !== -1) {
-                      deferred.reject();
-                    } else {
-                      deferred.resolve();
-                    }
-                  }, 500);
-                  return deferred.promise;
-                }
-              },
-              validationMessage: {
-                'async': "Wooohoo thats not an OK name!"
-              }
-
-            },
-            {
-              key: 'email',
-              placeholder: 'Not MY email',
-              ngModel: function (ngModel) {
-                ngModel.$validators.myMail = function (value) {
-                  return value !== 'david.lgj@gmail.com';
-                };
-              },
-              validationMessage: {
-                'myMail': "Thats my mail!"
-              }
-            },
-            {
-              "key": "comment",
-              "type": "textarea",
-              "placeholder": "Make a comment, write 'damn' and check the model",
-              $parsers: [
-                function (value) {
-                  if (value && value.replace) {
-                    return value.replace(/(damn|fuck|apple)/,'#!@%&');
-                  }
-                  return value;
-                }
-              ]
-            },
-            {
-              "type": "submit",
-        	    "style": "btn-info",
-              "title": "OK"
-            }
-          ];
-
-          $scope.model = {};
-
-          $scope.$watch('model', function (value){
-            if (value) {
-              $scope.prettyModel = JSON.stringify(value, undefined, 2);
-            }
-          }, true);
-
-      });
-
-    </script>
-
-
-  </body>
+                    $scope.$watch('model', function (value) {
+                        if (value) {
+                            $scope.prettyModel = JSON.stringify(value, undefined, 2);
+                        }
+                    }, true);
+                });
+        </script>
+    </body>
 </html>

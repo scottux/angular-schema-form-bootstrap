@@ -1,17 +1,21 @@
 <div class="schema-form-array {{::form.htmlClass + ' ' + idClass}}" sf-field-model="sf-new-array" sf-new-array>
   <label class="sprk-b-Label" ng-show="showTitle()">{{ form.title }}</label>
-  <div class="sprk-o-Box" sf-field-model ui-sortable="form.sortOptions">
-    <div class="{{::form.fieldHtmlClass}}"
+  <div sf-field-model ui-sortable="form.sortOptions">
+    <div class="sprk-u-ClearFix {{::form.fieldHtmlClass}}"
         sf-field-model="ng-repeat"
         ng-repeat="item in $$value$$ track by $id(trackBy(item, $index))">
       <button ng-hide="form.readonly || form.remove === null"
               ng-click="deleteFromArray(item)"
               ng-disabled="form.schema.minItems >= modelArray.length"
               type="button"
-              class="sprk-c-Button {{ form.style.remove || 'sprk-c-Button--removal' }}">
+              class="sprk-c-Button {{ form.style.remove || 'sprk-c-Button--removal' }} sprk-u-Float--right">
         {{ form.remove || 'Remove'}}
       </button>
-      <div schema-form-array-items sf-key-controller sf-parent-key="[{{form.key.join('][')}}]" sf-index="{{$index}}"></div>
+      <div schema-form-array-items
+           sf-key-controller
+           sf-parent-key="[{{form.key.join('][')}}]"
+           sf-index="{{$index}}"
+           class="sprk-u-Float--left sprk-u-Width-70"></div>
     </div>
   </div>
   <div ng-model="modelArray" schema-validate="form">
@@ -23,7 +27,7 @@
             ng-click="appendToArray()"
             ng-disabled="form.schema.maxItems <= modelArray.length"
             type="button"
-            class="sprk-c-Button {{ form.style.add }} pull-right">
+            class="sprk-c-Button sprk-c-Button--secondary {{ form.style.add }}">
       {{ form.add || 'Add'}}
     </button>
   </div>

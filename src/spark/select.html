@@ -8,6 +8,7 @@
           ng-disabled="form.readonly"
           sf-changed="form"
           class="sprk-b-Select sprk-u-Width-100 {{::form.fieldHtmlClass}}"
+          ng-class="{'sprk-b-Select--error': form.disableErrorState !== true && hasError()}"
           schema-validate="form"
           ng-options="item.value as item.name group by item.group for item in form.titleMap"
           name="{{::fieldId(true, false)}}">

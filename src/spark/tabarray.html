@@ -13,7 +13,7 @@
         </button>
         <button role="tab"
                 ng-hide="form.readonly || form.add === null"
-                class="sprk-c-Tabs__button"
+                class="sprk-c-Tabs__button sprk-c-Button--secondary"
                 ng-disabled="form.schema.maxItems <= modelArray.length"
                 ng-click="$event.preventDefault() || (selected.tab = appendToArray().length - 1)">
             {{ form.add || 'Add'}}
@@ -21,22 +21,24 @@
     </div>
 
     <div class="sprk-c-Tabs__content {{::form.fieldHtmlClass}}">
-        <div class="tab{{selected.tab}} index{{$index}}"
+        <div class="sprk-u-ClearFix tab{{selected.tab}} index{{$index}}"
              sf-field-model="ng-repeat"
              ng-repeat="item in $$value$$ track by $index"
              ng-show="selected.tab === $index"
              ng-class="{active: selected.tab === $index}">
 
-            <div schema-form-array-items sf-key-controller sf-parent-key="[{{form.key.join('][')}}]"
-                 sf-index="{{$index}}"></div>
-
             <button ng-hide="form.readonly || form.remove === null"
                     ng-click="selected.tab = deleteFromArray($index).length - 1"
                     ng-disabled="form.schema.minItems >= modelArray.length"
                     type="button"
-                    class="sprk-c-Button {{ form.style.remove || 'sprk-c-Button--removal' }}">
+                    class="sprk-c-Button {{ form.style.remove || 'sprk-c-Button--removal' }} sprk-u-Float--right">
                 {{ form.remove || 'Remove'}}
             </button>
+
+            <div schema-form-array-items sf-key-controller sf-parent-key="[{{form.key.join('][')}}]"
+                 sf-index="{{$index}}"
+                 class="sprk-u-Width-70 sprk-u-Float--left"></div>
+
         </div>
         <div ng-class="{'sprk-b-HelperText': !hasError(), 'sprk-b-ErrorText': hasError()}"
              ng-show="(hasError() && errorMessage(schemaError())) || form.description"
